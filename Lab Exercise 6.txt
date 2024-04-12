@@ -1,0 +1,285 @@
+###Q1: Write a Program to make a simple calculator that can add, subtract, multiply and divide
+using functions
+
+PROGRAM:
+a = float(input("Enter the first number: "))
+b = float(input("Enter the second number: "))
+c = input("Enter the operation (+, -, *, /): ")
+
+def addition(a, b):
+    return a + b
+
+def subtraction(a, b):
+    return a - b
+
+def multiplication(a, b):
+    return a * b
+
+def division(a, b):
+    if b == 0:
+        return "Error! Division by zero."
+    else:
+        return a / b
+
+if c == '+':
+    print("Result:", addition(a, b))
+elif c == '-':
+    print("Result:", subtraction(a, b))
+elif c == '*':
+    print("Result:", multiplication(a, b))
+elif c == '/':
+    print("Result:", division(a, b))
+else:
+    print("YOU HAVE ENTERED WRONG OPERATION")
+	
+OUTPUT:
+C:\Users\243597\PycharmProjects\pythonProject\.venv\Scripts\python.exe "C:\Users\243597\PycharmProjects\pythonProject\NEW Practice.py" 
+Enter the first number: 44
+Enter the second number: 66
+Enter the operation (+, -, *, /): +
+Result: 110.0
+
+###Q 2: write a Program to display the Fibonacci sequence up to n-th term where n is provided by
+the user.
+PROGRAM:
+def fibonacci_sequence(n):
+    fib_sequence = []
+    if n <= 0:
+        return fib_sequence
+    elif n == 1:
+        fib_sequence.append(0)
+        return fib_sequence
+    elif n == 2:
+        fib_sequence.extend([0, 1])
+        return fib_sequence
+    else:
+        fib_sequence.extend([0, 1])
+        a, b = 0, 1
+        for _ in range(2, n):
+            a, b = b, a + b
+            fib_sequence.append(b)
+        return fib_sequence
+
+def function():
+    try:
+        n = int(input("Enter the number of terms for Fibonacci sequence: "))
+        if n <= 0:
+            print("Please enter a positive integer.")
+            return
+        fib_sequence = fibonacci_sequence(n)
+        print("Fibonacci sequence up to the", n, "th term:")
+        print(fib_sequence)
+    except ValueError:
+        print("Please enter a valid integer.")
+
+if __name__ == "__main__":
+    function()
+OUTPUT:
+C:\Users\243597\PycharmProjects\pythonProject\.venv\Scripts\python.exe C:\Users\243597\PycharmProjects\pythonProject\Practice11.py 
+Enter the number of terms for Fibonacci sequence: 9
+Fibonacci sequence up to the 9 th term:
+[0, 1, 1, 2, 3, 5, 8, 13, 21]
+
+###Q 3: Write a Python Program To Display Powers of 2 Using Anonymous Function
+( Lambda function). Take number of terms from user.
+PROGRAM:
+Terms = int(input("Enter the number of terms: "))
+result = list(map(lambda x: 2 ** x, range(Terms)))
+
+print("The total terms is:", Terms)
+for i in range(Terms):
+    print("2 raised to power", i, "is", result[i])
+
+OUTPUT:
+C:\Users\243597\PycharmProjects\pythonProject\.venv\Scripts\python.exe "C:\Users\243597\PycharmProjects\pythonProject\NEW Practice.py" 
+Enter the number of terms: 5
+The total terms is: 5
+2 raised to power 0 is 1
+2 raised to power 1 is 2
+2 raised to power 2 is 4
+2 raised to power 3 is 8
+2 raised to power 4 is 16
+
+###Q 4: Write a Python Program to find numbers divisible by thirteen from a list using anonymous
+function.
+PROGRAM:
+numbers = [ 10,25,39, 52,34,57, 49, 78, 91, 87, 117, 130, 99,1300]
+
+divisible_by_13 = list(filter(lambda x: x % 13 == 0, numbers))
+
+print("Numbers divisible by thirteen from the list:")
+print(divisible_by_13)
+
+OUTPUT:
+C:\Users\243597\PycharmProjects\pythonProject\.venv\Scripts\python.exe "C:\Users\243597\PycharmProjects\pythonProject\NEW Practice.py" 
+Numbers divisible by thirteen from the list:
+[39, 52, 78, 91, 117, 130, 1300]
+
+###Q5: Write a Python program to display the Fibonacci sequence up to n-th term by using recursive
+functions.
+PROGRAM:
+def fibonacci_recursive(n):
+    """fibonacci series by using recursive function"""
+    if n <= 1:
+        return n
+    else:
+        return fibonacci_recursive(n-1) + fibonacci_recursive(n-2)
+n = int(input("Enter the number of terms in the Fibonacci sequence: "))
+if n <= 0:
+    print("Please enter a positive integer.")
+else:
+    print("Fibonacci sequence up to the", n, "term:")
+    for i in range(n):
+        print(fibonacci_recursive(i), end=" ")
+
+OUTPUT:
+C:\Users\243597\PycharmProjects\pythonProject\.venv\Scripts\python.exe "C:\Users\243597\PycharmProjects\pythonProject\NEW Practice.py" 
+Enter the number of terms in the Fibonacci sequence: 7
+Fibonacci sequence up to the 7 term:
+0 1 1 2 3 5 8 
+
+###Q 6: Write a Python program to find the sum of natural numbers up to n using recursive function.
+
+PROGRAM:
+def sum_of_natural_numbers(n):
+    if n <= 1:
+        return n
+    else:
+        return n + sum_of_natural_numbers(n - 1)
+n = int(input("Enter a positive integer: "))
+if n <= 0:
+    print(" Enter a positive integer.")
+else:
+    result = sum_of_natural_numbers(n)
+    print(f"The sum of natural numbers up to {n} is:", result)
+OUTPUT:
+C:\Users\243597\PycharmProjects\pythonProject\.venv\Scripts\python.exe "C:\Users\243597\PycharmProjects\pythonProject\NEW Practice.py" 
+Enter a positive integer: 14
+The sum of natural numbers up to 14 is: 105
+
+###Q. 7. Write a version of a palindrome recognizer that also accepts phrase palindromes such as 
+"Go hang a salami I'm a lasagna hog.", "Was it a rat I saw?", "Step on no pets", "Sit on a potato 
+pan, Otis", "Lisa Bonet ate no basil", "Satan, oscillate my metallic sonatas", "I roamed under it as 
+a tired nude Maori", "Rise to vote sir", or the exclamation "Dammit, I'm mad!". Note that 
+punctuation, capitalization, and spacing are usually ignored.
+
+PROGRAM:
+import re
+def palindrome(phrase):
+    new_phrase = re.sub(r'[^a-zA-Z0-9]', '', phrase.lower())
+    return new_phrase == new_phrase[::-1]
+def main():
+    phrases = [
+        "Go hang a salami I'm a lasagna hog.",
+        "Was it a rat I saw?",
+        "Step on no pets",
+        "Sit on a potato pan, Otis",
+        "Lisa Bonet ate no basil",
+        "Satan, oscillate my metallic sonatas",
+        "I roamed under it as a tired nude Maori",
+        "Rise to vote sir",
+        "Dammit, I'm mad!"
+    ]
+
+    for phrase in phrases:
+        if palindrome(phrase):
+            print(f'"{phrase}": a palindrome.')
+        else:
+            print(f'"{phrase}" : not a palindrome.')
+
+if __name__ == "__main__":
+    main()
+
+OUTPUT:
+C:\Users\243597\PycharmProjects\pythonProject\.venv\Scripts\python.exe C:\Users\243597\PycharmProjects\pythonProject\Practice11.py 
+"Go hang a salami I'm a lasagna hog.": a palindrome.
+"Was it a rat I saw?": a palindrome.
+"Step on no pets": a palindrome.
+"Sit on a potato pan, Otis": a palindrome.
+"Lisa Bonet ate no basil": a palindrome.
+"Satan, oscillate my metallic sonatas": a palindrome.
+"I roamed under it as a tired nude Maori": a palindrome.
+"Rise to vote sir": a palindrome.
+"Dammit, I'm mad!": a palindrome.
+
+Process finished with exit code 0
+
+###Q 8. A pangram is a sentence that contains all the letters of the English alphabet at least once, 
+for example: The quick brown fox jumps over the lazy dog. Your task here is to write a function 
+to check a sentence to see if it is a pangram or not.
+
+PROGRAM:
+def pangram(sentence):
+    sentence = sentence.lower()
+    letters = set()
+    for char in sentence:
+        if char.isalpha():
+            letters.add(char)
+    return len(letters) == 26
+
+sentence = "The quick brown fox jumps over the lazy dog."
+if pangram(sentence):
+    print(f'"{sentence}" is a pangram.')
+else:
+    print(f'"{sentence}" is not a pangram.')
+
+OUTPUT:
+C:\Users\243597\PycharmProjects\pythonProject\.venv\Scripts\python.exe C:\Users\243597\PycharmProjects\pythonProject\Practice11.py 
+"The quick brown fox jumps over the lazy dog." is a pangram.
+
+Process finished with exit code 0
+
+###Q.9. Define a function overlapping() that takes two lists and returns True if they have at least one
+member in common, False otherwise.
+PROGRAM:
+def overlapping(list1, list2):
+    set1 = set(list1)
+    set2 = set(list2)
+    return bool(set1.intersection(set2))
+
+list1 = [11, 99, 35, 43, 765]
+list2 = [8, 23, 798, 98, 777,99,23]
+if overlapping(list1, list2):
+    print("TRUE.")
+else:
+    print("FALSE")
+	
+OUTPUT:
+C:\Users\243597\PycharmProjects\pythonProject\.venv\Scripts\python.exe C:\Users\243597\PycharmProjects\pythonProject\Practice11.py 
+TRUE.
+
+###Q. 10. Write a function find_longest_word() that takes a list of words and returns the length of 
+the longest one.
+PROGRAM:
+def find_longest_word(word_list):
+    longest_len = 0
+    for word in word_list:
+        if len(word) > longest_len:
+            longest_length = len(word)
+    return longest_length
+
+words = ["veer", "Ramsingh", "pankaj rathode", "lala lajpatrai"]
+longest_length = find_longest_word(words)
+print("The length of the longest word is:", longest_length)
+
+OUTPUT:
+C:\Users\243597\PycharmProjects\pythonProject\.venv\Scripts\python.exe C:\Users\243597\PycharmProjects\pythonProject\Practice11.py 
+The length of the longest word is: 14
+
+###Q. 11. Write a function filter_long_words() that takes a list of words and an integer n and returns 
+the list of words that are longer than n.
+PROGRAM:
+def filter_long_words(word_list, n):
+    filter_words = []
+    for word in word_list:
+        if len(word) > n:
+            filter_words.append(word)
+    return filter_words
+words = ["mohan", "ram", "shyam", "rajesh"]
+n = 3
+long_word = filter_long_words(words, n)
+print("Words longer than", n, "is :", long_word)
+
+OUTPUT:
+C:\Users\243597\PycharmProjects\pythonProject\.venv\Scripts\python.exe C:\Users\243597\PycharmProjects\pythonProject\Practice11.py 
+Words longer than 3 is : ['mohan', 'shyam', 'rajesh']
